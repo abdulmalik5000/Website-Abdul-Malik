@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        body {
+            background-image: url('Backroom pool.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar {
+            position: fixed;
+            top: 24px;
+            right: 32px;
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+        }
+        .navbar a {
+            padding: 8px 16px;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
+        }
+        .navbar a:hover {
+            background-color: #1565c0;
+        }
+        .main-container {
+            background: white;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18), 0 0 10px rgba(0,0,0,0.08);
+            padding: 18px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid #1976d2;
+            width: fit-content;
+            min-width: 0;
+            max-width: 90vw;
+        }
+        h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #1976d2;
+            text-align: center;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.07);
+            white-space: nowrap;
+        }
+        .datetime {
+            margin-top: 16px;
+            font-size: 1.1rem;
+            color: #333;
+            letter-spacing: 1px;
+        }
+        .marquee-container {
+            width: 100vw;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.85);
+            padding: 8px 0 4px 0;
+            z-index: 200;
+        }
+        marquee {
+            color: #1976d2;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="my.biodata.html">My Biodata</a>
+            <a href="login.html">Login</a>
+            <a href="sign.in.html">Sign In</a>
+            <a href="my.project.html">My Project</a>
+        </nav>
+    </header>
+    <div class="main-container">
+        <h1>WELCOME TO MY FIRST WEBSITE!</h1>
+        <div class="datetime" id="datetime"></div>
+    </div>
+    <div class="marquee-container">
+        <marquee behavior="scroll" direction="left">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </marquee>
+    </div>
+    <div id="myAccountBtn" style="display:none; position:fixed; top:24px; left:32px; z-index:101;">
+        <button onclick="showAccount()" style="padding:8px 16px; background:#1976d2; color:#fff; border:none; border-radius:6px; font-size:1rem; cursor:pointer;">My Account</button>
+    </div>
+    <div id="accountInfo" style="display:none; position:fixed; top:70px; left:32px; background:#fff; border:2px solid #1976d2; box-shadow:0 2px 8px rgba(25,118,210,0.10); padding:16px; border-radius:8px; z-index:102;">
+        <span id="accountDetail"></span>
+        <br>
+        <button onclick="logout()" style="margin-top:8px; background:#d32f2f; color:#fff; border:none; border-radius:4px; padding:6px 12px; cursor:pointer;">Logout</button>
+    </div>
+    <script>
+        function updateDateTime() {
+            const months = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            const days = [
+                "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+            ];
+            const now = new Date();
+            const hour = now.getHours().toString().padStart(2, '0');
+            const minute = now.getMinutes().toString().padStart(2, '0');
+            const second = now.getSeconds().toString().padStart(2, '0');
+            const date = now.getDate();
+            const monthName = months[now.getMonth()];
+            const year = now.getFullYear();
+            const dayName = days[now.getDay()];
+            document.getElementById('datetime').textContent =
+                `${dayName}, ${date} ${monthName} ${year} | ${hour}:${minute}:${second}`;
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+
+        function checkSignedIn() {
+            const acc = localStorage.getItem('signedInAccount');
+            document.getElementById('myAccountBtn').style.display = acc ? 'block' : 'none';
+        }
+        function showAccount() {
+            const acc = JSON.parse(localStorage.getItem('signedInAccount'));
+            if (acc) {
+                document.getElementById('accountDetail').innerHTML = `
+                    <b>Name:</b> ${acc.fullname}<br>
+                    <b>Email:</b> ${acc.email}<br>
+                    <b>Username:</b> ${acc.username}
+                `;
+                document.getElementById('accountInfo').style.display = 'block';
+            }
+        }
+        function logout() {
+            localStorage.removeItem('signedInAccount');
+            document.getElementById('accountInfo').style.display = 'none';
+            checkSignedIn();
+        }
+        window.onload = checkSignedIn;
+    </script>
+</body>
+</html>

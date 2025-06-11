@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <style>
+        body {
+            background-image: url('picture2.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .navbar {
+            position: fixed;
+            top: 24px;
+            right: 32px;
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+        }
+        .navbar a {
+            padding: 8px 16px;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
+        }
+        .navbar a:hover {
+            background-color: #1565c0;
+        }
+        .project-container {
+            background: white;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18), 0 0 10px rgba(0,0,0,0.08);
+            padding: 32px 48px 24px 48px;
+            margin-top: 80px;
+            border: 2px solid #1976d2;
+            width: 500px;
+            max-width: 95vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2 {
+            color: #1976d2;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .project-list {
+            width: 100%;
+            font-size: 1rem;
+            color: #222;
+            list-style: none;
+            padding: 0;
+        }
+        .project-list li {
+            margin-bottom: 12px;
+        }
+        .project-list a {
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .project-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="my.biodata.html">My Biodata</a>
+        <a href="login.html">Login</a>
+        <a href="#">Sign In</a>
+        <a href="my.project.html">My Project</a>
+    </nav>
+    <div class="project-container">
+        <h2>My GitHub Projects</h2>
+        <ul class="project-list">
+            <li><a href="https://github.com/abdulmalik5000/Surah-Al-Fateehah" target="_blank">Project 1 (Surah Al-Fateehah)</a></li>
+            <li><a href="https://github.com/abdulmalik5000/kuntu-maitan-lyric" target="_blank">Project 2 (Kuntu Maitan Lyric)</a></li>
+            <li><a href="https://github.com/abdulmalik5000/the-story-of-ibn-hanbal-and-baker" target="_blank">Project 3 (Story Of Imam Ahmed Ibn Hanbal)</a></li>
+            <!-- Tambahkan lagi sesuai kebutuhan -->
+        </ul>
+        <a href="https://github.com/abdulmalik5000" target="_blank" style="
+            display:inline-block;
+            margin-top:18px;
+            padding:10px 24px;
+            background:#1976d2;
+            color:#fff;
+            border:none;
+            border-radius:6px;
+            font-size:1rem;
+            text-decoration:none;
+            font-weight:bold;
+            box-shadow:0 2px 8px rgba(25,118,210,0.10);
+            transition:background 0.2s;
+            text-align:center;
+        ">Visit My GitHub Profile</a>
+    </div>
+</body>
+</html>

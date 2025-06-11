@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, Helvetica;
+            font-size: 16px;
+            color: black;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .center-rectangle {
+            border-style: inset;
+            border-color: rgb(255, 255, 255);
+            border-width: 4px;
+            background: white;
+            width: 350px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 0 10px rgba(0,0,0,0.1);
+        }
+        .login-form {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .login-form button {
+            padding: 10px;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
+        }
+        .login-form button:hover {
+            background-color: #1565c0;
+        }
+        .login-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 22px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+        .login-links {
+            margin-top: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .login-links a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        .login-links a:hover {
+            text-decoration: underline;
+        }
+        /* Navbar pojok kanan atas */
+        .navbar {
+            position: fixed;
+            top: 24px;
+            right: 32px;
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+        }
+        .navbar a {
+            padding: 8px 16px;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
+        }
+        .navbar a:hover {
+            background-color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="my.biodata.html">My Biodata</a>
+        <a href="login.html">Login</a>
+        <a href="sign.in.html">Sign In</a>
+        <a href="my.project.html">My Project</a>
+    </nav>
+    <div class="center-rectangle">
+        <form class="login-form">
+            <div class="login-title">Login</div>
+            <input type="text" placeholder="Username" required>
+            <div style="position: relative;">
+                <input id="password" type="password" placeholder="Password" required style="width: 100%;">
+                <label style="font-size:12px;">
+                    <input type="checkbox" onclick="togglePassword()"> Show Password
+                </label>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="login-links">
+            <a href="#">Forgot password?</a>
+            <span>Don't have an account yet? <a href="sign.in.html">Create here</a></span>
+        </div>
+    </div>
+    <script>
+        function togglePassword() {
+            var pw = document.getElementById("password");
+            pw.type = pw.type === "password" ? "text" : "password";
+        }
+    </script>
+</body>
+</html>
